@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /* Leetcode 1443 */
-class Graph {
+class MinTimeToCollectApples {
     private static int helper(int u, int parent, List<Boolean> hasApple, List<List<Integer>> graph) {
         int time = 0;
         for (int neigh : graph.get(u)) {
