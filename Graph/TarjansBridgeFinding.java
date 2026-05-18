@@ -14,8 +14,8 @@ public class TarjansBridgeFinding {
     static int time = 0;
 
     private static void dfs(int u, int parent, Pair[] stats, boolean[] isV, List<List<Integer>> unDirectedgraph) {
-        isV[u] = true;
         stats[u].disc = stats[u].low = ++time;
+        isV[u] = true;
 
         for (int v : unDirectedgraph.get(u)) {
             if (v == parent)
@@ -54,8 +54,8 @@ public class TarjansBridgeFinding {
 
         Pair stats[] = new Pair[n];
 
-        for(int i=0; i<stats.length; i++){
-            stats[i]=new Pair(0, 0);
+        for (int i = 0; i < stats.length; i++) {
+            stats[i] = new Pair(0, 0);
         }
         boolean isV[] = new boolean[n];
         for (int i = 0; i < n; i++) {
