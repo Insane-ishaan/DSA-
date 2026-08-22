@@ -2,14 +2,14 @@ class EL implements Comparable<EL> {
     int value;
     int freq;
 
-    public EL(int value,int freq) {
+    public EL(int value, int freq) {
         this.value = value;
         this.freq = freq;
     }
 
     @Override
     public int compareTo(EL e2) {
-        return e2.freq - this.freq;
+        return this.freq - e2.freq;
     }
 }
 
@@ -25,6 +25,10 @@ class Solution {
             int v = entry.getKey();
             int f = entry.getValue();
             pq.add(new EL(v, f));
+
+            if (pq.size() > k) {
+                pq.remove();
+            }
         }
 
         int ans[] = new int[k];
