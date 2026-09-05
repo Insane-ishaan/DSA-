@@ -1,7 +1,9 @@
 class Solution {
-    private int[] getNSL(int h[], int len) {
+    private int getMaxArea(int[] h, int len) {
         Stack<Integer> st = new Stack<>();
         int[] NSL = new int[len];
+        int[] NSR = new int[len];
+
         for (int i = 0; i < len; i++) {
             while (!st.isEmpty() && h[st.peek()] >= h[i]) {
                 st.pop();
@@ -11,12 +13,7 @@ class Solution {
             st.push(i);
         }
 
-        return NSL;
-    }
-
-    private int[] getNSR(int[] h, int len) {
-        Stack<Integer> st = new Stack<>();
-        int[] NSR = new int[len];
+        st.clear();
         for (int i = len - 1; i >= 0; i--) {
             while (!st.isEmpty() && h[st.peek()] >= h[i]) {
                 st.pop();
@@ -25,13 +22,6 @@ class Solution {
             NSR[i] = st.isEmpty() ? len : st.peek();
             st.push(i);
         }
-
-        return NSR;
-    }
-
-    private int getMaxArea(int[] h, int len) {
-        int[] NSR = getNSR(h, len);
-        int[] NSL = getNSL(h, len);
 
         int maxArea = 0;
         for (int i = 0; i < len; i++) {
